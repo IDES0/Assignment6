@@ -38,7 +38,7 @@ public class DrawingPanel implements ActionListener {
     private JPanel panel;         // overall drawing surface
     private BufferedImage image;  // remembers drawing commands
     private Graphics2D g2;        // graphics context for painting
-    private JLabel statusBar;     // status bar showing mouse position
+    private JLabel statusBar;     // status bar showing mouse posi  tion
     private long createTime;
 
     static {
