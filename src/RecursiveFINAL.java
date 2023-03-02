@@ -385,14 +385,46 @@ public class RecursiveFINAL {
      * @return per the post condition
      */
     public static int canEscapeMaze(char[][] rawMaze) {
-        int startRow = -1;
-        int startCol = -1;
-        int numCoins;
         int numRows = rawMaze.length;
         int numCols = rawMaze[0].length;
-        int numExitCells;
+        int startRow = -1;
+        int startCol = -1;
+        int numCoins = 0;
+
+        boolean[][] visited = new boolean[numRows][numCols];
+
+        for (int i = 0; i < numRows; i++) {
+            for (int j = 0; j < numCols; j++) {
+                if (rawMaze[i][j] == 'S') {
+                    startRow = i;
+                    startCol = j;
+                } else if (rawMaze[i][j] == '$') {
+                    numCoins++;
+                }
+            }
+        }
+
+        return explore(rawMaze, visited, numCoins, startRow, startCol);
+    }
+
+    private int explore(char[][] maze, boolean[][] visited, int numCoins, int row, int col,
+                        int numRows, int numCols) {
+
+        visited[row][col] = true;
+
+        if (maze[row][col] == '$') {
+            numCoins--;
+        }
+
+        if (maze[row][col] == 'E' && numCoins == 0) {
+            // Found an exit cell with all coins collected
+            return 2;
+        }
 
 
-        return -1;
+
+
+
+
     }
 }
